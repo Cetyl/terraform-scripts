@@ -63,7 +63,21 @@ change the SG to port 8200 to acess Vault UI
 ## Login to Vault
 To log in the valult UI
 - Select Method as token
-- Token as Root Token got in after command ---> ( vault server -dev -dev-listen-address="0.0.0.0:8200") 
+- Token as Root Token got in after command ---> ( vault server -dev -dev-listen-address="0.0.0.0:8200")
+
+#### Important ---> Create a new terminal and add the command ( export VAULT_ADDR='http://0.0.0.0:8200' )
+
+## Create Secret Engine 
+
+Create a secret engine to connect to vault securely 
+- Select Secrets engines / Enable new engine / select KV / Path = kv / Enable engine
+- In kv engine / Create secret / path for this secret = test-secret(name) / Secret data = username/password (any name and pass)
+/ Save
+
+## Enable AppRole Authentication via UI
+
+- Select Secret engines / Access / Authentication method / Enable new method
+- Select App Role / Next / Enable Method
 
 ## Configure Terraform to read the secret from Vault.
 
