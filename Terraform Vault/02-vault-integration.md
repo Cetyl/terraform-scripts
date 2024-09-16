@@ -58,6 +58,12 @@ To start Vault, you can use the following command:
 ```
 vault server -dev -dev-listen-address="0.0.0.0:8200"
 ```
+change the SG to port 8200 to acess Vault UI
+
+## Login to Vault
+To log in the valult UI
+- Select Method as token
+- Token as Root Token got in after command ---> ( vault server -dev -dev-listen-address="0.0.0.0:8200") 
 
 ## Configure Terraform to read the secret from Vault.
 
