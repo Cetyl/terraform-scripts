@@ -1,39 +1,39 @@
 variable "project_name" {
-  description = "Project name prefix for resources"
+  description = "The name of the project (e.g., prim-dev-p8)."
   type        = string
 }
 
 variable "environment" {
-  description = "Environment name (e.g., dev, prod)"
+  description = "The environment name (e.g., dev)."
   type        = string
 }
 
 variable "vpc_cidr" {
-  description = "CIDR block for the VPC"
+  description = "CIDR block for the VPC (e.g., 10.0.8.0/21)."
   type        = string
 }
 
 variable "availability_zones" {
-  description = "List of availability zones"
+  description = "List of Availability Zones to use (e.g., [us-east-1a, us-east-1b])."
   type        = list(string)
 }
 
 variable "web_public_subnets" {
-  description = "List of public subnets for web tier"
+  description = "List of CIDR blocks for web public subnets (paired with AZs)."
   type        = list(string)
 }
 
 variable "web_private_subnets" {
-  description = "List of private subnets for web tier"
+  description = "List of CIDR blocks for web private subnets (paired with AZs)."
   type        = list(string)
 }
 
 variable "app_private_subnets" {
-  description = "List of private subnets for app tier"
+  description = "List of CIDR blocks for app private subnets (paired with AZs)."
   type        = list(string)
 }
 
 variable "database_subnets" {
-  description = "List of private subnets for database tier"
+  description = "List of CIDR blocks for database subnets (paired with AZs)."
   type        = list(string)
 }

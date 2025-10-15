@@ -15,10 +15,12 @@ output "private_app_subnets" {
 }
 
 output "database_subnets" {
+  # Corresponds to resource "aws_subnet" "database" in main.tf
   value = aws_subnet.database[*].id
 }
 
 output "nat_gateways" {
+  # Corresponds to resource "aws_nat_gateway" "main" in main.tf
   value = aws_nat_gateway.main[*].id
 }
 
