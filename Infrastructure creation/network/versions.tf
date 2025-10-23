@@ -1,3 +1,6 @@
+############################################
+# Terraform and provider version constraints
+############################################
 terraform {
   required_version = ">= 1.5.0"
   required_providers {
@@ -10,6 +13,6 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-east-1"
-  # profile = "prim-dev-p8"
+  region  = var.global_config.aws_region
+  profile = var.global_config.aws_profile
 }
