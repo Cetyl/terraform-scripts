@@ -95,7 +95,7 @@ resource "aws_nat_gateway" "natgw_01" {
 resource "aws_subnet" "pvt_web_sub_01" {
   for_each = { for subnet in var.vpc_01.private_web_subnets : subnet.name => subnet }
 
-  vpc_id                  =aws_vpc.vpc_01.id
+  vpc_id                  = aws_vpc.vpc_01.id
   cidr_block              = each.value.cidr
   availability_zone       = each.value.az
   map_public_ip_on_launch = false

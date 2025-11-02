@@ -1,36 +1,9 @@
-# read network outputs from network remote state
-data "terraform_remote_state" "network" {
-  backend = "s3"
-  config = {
-    bucket = var.vpc_state_bucket
-    key    = var.vpc_state_key
-    region = var.vpc_state_region
-  }
-}
+# DB Subnet Group for RDS instance
+resource "aws_db_subnet_group" "db_public_subnet_group_01" {
+  name       = "${var.global_config.db_prefix}-pub-sub-grp-${var.rds_config_01.count}"
+  subnet_ids = data.terraform_remote_state.network.outputs.vpc_01.public_subnet_ids
 
-resource "aws_security_group" "rds_sg" {
-  name        = "${var.project_name}-rds-sg"
-  description = "RDS security group for ${var.project_name}"
-  vpc_id      = data.terraform_remote_state.network.outputs.vpc_id
-
-  # restrict to your VPC internal CIDR. If your network outputs vpc_cidr, use it; otherwise adjust.
-  ingress {
-    description = "Postgres from within VPC"
-    from_port   = var.port
-    to_port     = var.port
-    protocol    = "tcp"
-    cidr_blocks = [data.terraform_remote_state.network.outputs.vpc_cidr]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name        = "${var.project_name}-rds-sg"
-    Environment = var.environment
-  }
+  tags = merge(local.common_tags_01, {
+    Name = "${var.global_config.db_prefix}-pub-sub-grp-${var.rds_config_01.count}"
+  })
 }
