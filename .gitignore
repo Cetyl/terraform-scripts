@@ -1,0 +1,64 @@
+﻿##############################################
+#  Terraform Project .gitignore
+##############################################
+
+# Terraform local state
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.backup
+
+# Terraform crash logs
+crash.log
+
+# Local-only variable overrides
+*.tfvars
+*.tfvars.json
+
+# Terraform working directories
+.terraform/
+**/.terraform/*
+
+# Terraform lock file
+.terraform.lock.hcl
+
+# Terraform plan output files
+*.tfplan
+plan.out
+
+##############################################
+#  IDE and Editor Settings
+##############################################
+
+# Visual Studio Code
+.vscode/
+.history/
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+##############################################
+#  OS-specific Junk Files
+##############################################
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Linux
+*~
+
+##############################################
+#  Sensitive Files (optional but recommended)
+##############################################
+*.pem
+*.key
+*.env
